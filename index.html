@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vocentra - Early Access</title>
+
+    <link rel="shortcut icon" href="icon.png" type="image/x-icon">
+    
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <nav>
+        <img src="./icon.png" alt="icon" class="icon">
+    </nav>
+    
+    <section>
+        <div class="container">
+            <h1>Vocentra</h1>
+            <p>Sign up for early access to our AI-powered language learning app!</p>
+        </div>
+    
+        <div class="container-form">
+            <div class="text-container"><p class="text">Get Early Access</p></div>
+            <input type="email" id="email" placeholder="Enter your email">
+            <button id="submit-btn">Sign Up</button>
+            <p id="message"></p>
+        </div>
+    </section>
+    
+    <script type="module">
+        import { saveEmail } from "./firebase-config.js";
+    
+        document.getElementById("submit-btn").addEventListener("click", async () => {
+            const email = document.getElementById("email").value;
+            if (email) {
+                await saveEmail(email);
+                document.getElementById("message").innerText = "Thanks! We'll notify you soon.";
+            } else {
+                document.getElementById("message").innerText = "Please enter a valid email.";
+            }
+        });
+    </script>
+</body>
+</html>
