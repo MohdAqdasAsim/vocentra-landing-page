@@ -31,14 +31,15 @@
             <p id="message"></p>
         </div>
     </section>
-    
+
     <script type="module">
-        import { saveEmail } from "./firebase-config.js";
+        // import { saveEmail } from "./firebase-config.js";
     
         document.getElementById("submit-btn").addEventListener("click", async () => {
             const email = document.getElementById("email").value;
+            
             if (email) {
-                await saveEmail(email);
+                // await saveEmail(email);
                 document.getElementById("message").innerText = "Thanks! We'll notify you soon.";
             } else {
                 document.getElementById("message").innerText = "Please enter a valid email.";
